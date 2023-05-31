@@ -2,12 +2,12 @@ package OOP_hm.Book;
 
 public class Book {
 
-     String bookName;
-     String authorsFullName;
-     int release;
-     String publishingHouse;
-     String style;
-     int countOfPages;
+    String bookName;
+    String authorsFullName;
+    int release;
+    String publishingHouse;
+    String style;
+    int countOfPages;
 
 
     // GETTER
@@ -69,12 +69,14 @@ public class Book {
         this.style = style;
         this.countOfPages = countOfPages;
     }
-    public Book(){}
+
+    public Book() {
+    }
 
 
-    public void showInfo(Book book){
-        System.out.println(book.bookName + book.authorsFullName + book.release
-                + book.publishingHouse + book.style + book.countOfPages );
+    public void showInfo(Book book) {
+        System.out.println(book.bookName + "\n" + book.authorsFullName + "\n" + book.release
+                + "\n" + book.publishingHouse + "\n" + book.style + "\n" + book.countOfPages);
     }
 
     public String showInfo() {
