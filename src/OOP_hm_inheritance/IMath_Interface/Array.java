@@ -1,32 +1,38 @@
 package OOP_hm_inheritance.IMath_Interface;
 
-public class Array implements IMath {
+public class Array<T extends Comparable<T>> implements IMath<T> {
+    private T[] array;
+    public Array(T[] array){
+
+        this.array = array;
+    }
+
     @Override
-    public int Max(int array[]) {
-        int max = array[0];
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] > max)
+    public T Max() {
+        T max = array[0];
+        for (int i = 1; i < array.length; i++) {
+            if (array[i].compareTo(max) > 0)
                 max = array[i];
         }
         return max;
     }
 
     @Override
-    public int Min(int array[]) {
-        int min = array[0];
-        for (int i = 0; i < array.length ; i++) {
-            if (array[i] < min)
+    public T Min() {
+        T min = array[0];
+        for (int i = 1; i < array.length; i++) {
+            if (array[i].compareTo(min) < 0)
                 min = array[i];
         }
         return min;
     }
 
     @Override
-    public float Avg(int array[]) {
-        float sum=0;
-        for (int n : array) {
-            sum+=n;
+    public float Avg() {
+        float sum = 0;
+        for (T n : array) {
+            sum += Float.parseFloat(n.toString());
         }
-        return sum/array.length;
+        return sum / array.length;
     }
 }

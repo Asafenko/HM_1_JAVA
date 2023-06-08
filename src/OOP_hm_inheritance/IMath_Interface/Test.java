@@ -4,13 +4,12 @@ import org.w3c.dom.ls.LSOutput;
 
 public class Test {
     public static void main(String[] args) {
-        Array array = new Array();
+        Double[] arr={44.,55.,2.,121.,32.,56.,37.,1.2,48.,5.,43.2};
+        Array array = new Array(arr);
 
-        int[] arr={44,55,2,121,32,56,3,12,4,5,432,0};
-
-        int max = array.Max(arr);
-        int min = array.Min(arr);
-        float avg = array.Avg(arr);
+        var max = array.Max();
+        var min = array.Min();
+        float avg = array.Avg();
 
         System.out.println("MAX: " + max);
         System.out.println("MIN: " + min);
