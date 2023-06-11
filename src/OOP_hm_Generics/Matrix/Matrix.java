@@ -73,8 +73,61 @@ public class Matrix<T extends Number> {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 sum += Float.parseFloat(matrix[i][j].toString());
+                //sum += Float.valueOf(matrix[i][j].toString());
             }
         }
-            return sum / (rows * columns);
+        return sum / (rows * columns);
+    }
+
+    public Matrix<T> add(Matrix<T> another) throws IllegalAccessException {
+        if (another.rows != rows || another.columns != columns) {
+            throw new IllegalAccessException("Matrix are not equal");
+        }
+        Matrix<T> newMatrix = new Matrix<>(rows, columns);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                newMatrix.matrix[i][j] = (T) Integer.valueOf(matrix[i][j].intValue() + another.matrix[i][j].intValue());
+            }
+        }
+        return newMatrix;
+    }
+
+    public Matrix<T> subtract(Matrix<T> another) throws IllegalAccessException {
+        if (another.rows != rows || another.columns != columns) {
+            throw new IllegalAccessException("Matrix are not equal");
+        }
+        Matrix<T> newMatrix = new Matrix<>(rows, columns);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                newMatrix.matrix[i][j] = (T) Integer.valueOf(matrix[i][j].intValue() - another.matrix[i][j].intValue());
+            }
+        }
+        return newMatrix;
+    }
+
+    public Matrix<T> multiply(Matrix<T> another) throws IllegalAccessException {
+        if (another.rows != rows || another.columns != columns) {
+            throw new IllegalAccessException("Matrix are not equal");
+        }
+        Matrix<T> newMatrix = new Matrix<T>(rows, columns);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                newMatrix.matrix[i][j] = (T) (Number)(matrix[i][j].intValue() * another.matrix[i][j].intValue());
+            }
+        }
+        return newMatrix;
+    }
+
+    public Matrix<T> division(Matrix<T> another) throws IllegalAccessException {
+        if (another.rows != rows || another.columns != columns) {
+            throw new IllegalAccessException("Matrix are not equal");
+        }
+        Matrix<T> newMatrix = new Matrix<T>(rows, columns);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                newMatrix.matrix[i][j] = (T) (Number)(matrix[i][j].intValue() / another.matrix[i][j].intValue());
+            }
+        }
+        return newMatrix;
     }
 }
