@@ -12,7 +12,7 @@ class CurrencyConverterTest {
         CurrencyConverter converter = new CurrencyConverter(0.85, 0.92, 0.75, 0.0092);
         double amount = 100;
         double expectedAmount = 100 / 0.85;
-        Assertions.assertEquals(expectedAmount, converter.convertToDollars(amount, CurrencyConverter.Currency.EURO));
+        Assertions.assertEquals(expectedAmount, converter.convertToDollars(amount, CurrencyConverter.EURO));
     }
 
     @Test
@@ -20,6 +20,6 @@ class CurrencyConverterTest {
         CurrencyConverter converter = new CurrencyConverter(0.85, 0.92, 0.75, 0.0092);
         double amount = 100;
         double expectedAmount = 100 * 0.85;
-        Assertions.assertEquals(expectedAmount, converter.convertFromDollars(amount, CurrencyConverter.Currency.EURO));
+        Assertions.assertEquals(expectedAmount, converter.convertFromDollars(amount, CurrencyConverter.EURO));
     }
 }
