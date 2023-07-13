@@ -1,0 +1,90 @@
+CREATE SCHEMA IF NOT EXISTS homework
+    AUTHORIZATION postgres;
+
+
+
+CREATE TABLE IF NOT EXISTS homework.cafe
+(
+    id bigint NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9223372036854775807 CACHE 1 ),
+    name text COLLATE pg_catalog."default",
+    CONSTRAINT cafe_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS homework.cafe
+    OWNER to postgres;
+
+
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS homework.assortment
+(
+    id bigint NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9223372036854775807 CACHE 1 ),
+    cafe_id bigint,
+    drink_name text COLLATE pg_catalog."default",
+    CONSTRAINT assortment_pkey PRIMARY KEY (id),
+    CONSTRAINT cafe_id FOREIGN KEY (cafe_id)
+        REFERENCES homework.cafe (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS homework.assortment
+    OWNER to postgres;
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS homework.prices
+(
+    id bigint NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9223372036854775807 CACHE 1 ),
+    drink_id bigint,
+    cafe_id bigint,
+    price double precision,
+    CONSTRAINT prices_pkey PRIMARY KEY (id),
+    CONSTRAINT cafe_id FOREIGN KEY (cafe_id)
+        REFERENCES homework.cafe (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID,
+    CONSTRAINT drink_id FOREIGN KEY (drink_id)
+        REFERENCES homework.assortment (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS homework.prices
+    OWNER to postgres;
+
+
+
+
+
+
+
+
+
+SELECT MIN(price) AS min_price
+FROM homework.prices;
+
+
+SELECT MAX(price) AS max_price
+FROM homework.prices;
+
+
+SELECT AVG(price) AS avg_price
+FROM homework.prices;
+
+
+
