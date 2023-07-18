@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://C:/Program Files/PostgreSQL/15/15.iml" filepath="C:/Program Files/PostgreSQL/15/15.iml" />
       <module fileurl="file://$PROJECT_DIR$/HM_1_JAVA.iml" filepath="$PROJECT_DIR$/HM_1_JAVA.iml" />
     </modules>
   </component>
